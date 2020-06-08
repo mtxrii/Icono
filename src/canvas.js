@@ -40,10 +40,10 @@ function setup() {
     frameRate(60);
 }
 
-let userString = "pistachio";
+let userString = "fuck ops";
 
 let userHash = gridHash(userString);
-//let userColor = colorHash(userString);
+let userColor = colorHash(userString);
 function draw() {
 
     if (counter >= 100) {
@@ -62,8 +62,7 @@ function putOnBoard() {
             let x = i * resolution;
             let y = j * resolution;
 
-            //if (grid[i][j] == 1) fill(userColor);
-            if (grid[i][j] == 1) fill(255);
+            if (grid[i][j] == 1) fill(userColor);
             else fill(0);
             
             stroke(0);
@@ -183,15 +182,15 @@ function colorHash(str) {
         }
     }
     switch (element) {
-        case zeros:
+        case "zeros":
             return COLORS.Orange;
-        case twothrees:
+        case "twothrees":
             return COLORS.Red;
-        case fives:
+        case "fives":
             return COLORS.Purple;
-        case sixnines:
+        case "sixnines":
             return COLORS.Blue;
-        case eights:
+        case "eights":
             return COLORS.Teal;
         default:
             return COLORS.Lime;
