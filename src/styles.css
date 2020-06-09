@@ -1,10 +1,22 @@
 body {
 	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-    background-color: #283747;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Teko', sans-serif;
+    font-size: 120%;
+    text-shadow: 3px 3px 2px rgb(54, 59, 94);
+
+    background: linear-gradient(45deg, rgb(86, 95, 151) 0%, 
+                                    rgb(86, 95, 151) 63%,
+                                    rgb(105, 118, 165) 63%, 
+                                    rgb(105, 118, 165) 75%,
+                                    rgb(125, 141, 179) 75%, 
+                                    rgb(125, 141, 179) 81%,
+                                    rgb(144, 165, 193) 81%,
+                                    rgb(144, 165, 193) 85%,
+                                    rgb(164, 188, 207) 85%,
+                                    rgb(164, 188, 207) 90%,
+                                    rgb(183, 211, 221) 90%, 
+                                    rgb(183, 211, 221) 100%) fixed;
+            
 }
 
 .container {
@@ -12,4 +24,32 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#app {
+    box-shadow: 10px -10px rgb(54, 59, 94);
+}
+
+.btn {
+    background-color: rgb(54, 59, 94);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.btn:hover {
+    background-color: rgb(39, 42, 66);
+}
+
+.buttons {
+    margin: auto;
+    text-align: center;
+}
+
+input[type=text] {
+    /*width: 100%;*/
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }

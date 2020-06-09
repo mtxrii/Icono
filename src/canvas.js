@@ -18,12 +18,31 @@ function make2DArray(cols, rows) {
 let grid;
 let cols;
 let rows;
-let counter = 0;
+let counter;
 let resolution = 20;
 
-let wrapAround = true;
 
-function setup() {
+
+let userString = "";
+
+let userHash;
+let userColor;
+
+function redo() {
+    userString = document.getElementById("string2gen").value;
+    restart();
+}
+
+function restart() {
+    userHash = gridHash(userString);
+    userColor = colorHash(userString);
+    counter = 0;
+
+    if (userString != "") {
+        let dom = document.getElementById('body');
+        dom.style.textShadow = "3px 3px 2px " + userColor;
+    }
+
     var canvas = createCanvas(400, 400);
     canvas.parent('app');
     background(0);
@@ -36,19 +55,18 @@ function setup() {
             grid[i][j] = 0;
         }
     }
-
-    frameRate(60);
 }
 
-let userString = "fuck ops";
+function setup() {
+    frameRate(60);
+    restart();
+}
 
-let userHash = gridHash(userString);
-let userColor = colorHash(userString);
 function draw() {
 
-    if (counter >= 100) {
-        noLoop();
-    }
+    // if (counter >= 100) {
+    //     noLoop();
+    // }
 
     spot = getCoords(counter);
     grid[spot[0]][spot[1]] = userHash[counter];
@@ -82,39 +100,6 @@ function getCoords(c) {
     if (c < rows) y = 0;
     if (x == 0) y += 1;
     return [x, y];
-}
-
-// no longer used
-function snakeHash(str, len) {
-    if (len > 200) return "no";
-    let n1 = 0;
-    for (let i = 0; i < str.length; i++) {
-      n1 += (str[i].charCodeAt(0)**2);
-    }
-    let s1 = n1 + "";
-    let n2 = 0;
-    for (let i = str.length-1; i > 0; i--) {
-      n2 += (str[i].charCodeAt(0)**2);
-    }
-    let s2 = n2 + "";
-  
-    let s3 = "";
-    let n3 = s1.length;
-    if (s2.length < n3) n3 = s2.length;
-    for (let i = 0; i < n3; i++) {
-      s3 = s1[i] + s2[i] + s3;
-    }
-  
-    if (s3.length == len) return parseInt(s3);
-    if (s3.length > len) return parseInt(s3.slice(0, len));
-    else {
-      let n4 = len-s3.length
-      for(let i = 0; i < n4; i++) {
-        s3 = s3 + s3[parseInt(s2[parseInt(s1[i%s1.length])%s2.length])%s3.length];
-      }
-    }
-  
-    return s3;
 }
 
 function binHash(str) {
@@ -153,44 +138,16 @@ function gridHash(str) {
 }
 
 function colorHash(str) {
-    let numbers = "";
-    for (let i = 0; i < str.length; i++) {
-        numbers += str[i].charCodeAt(0);
-    }
-    let distribution = {
-        zeros: 0,
-        twothrees: 0,
-        fives: 0,
-        sixnines: 0,
-        eights: 0,
-        elevens: 0
-    };
-    for (let i = 0; i < numbers.length; i++) {
-        if (numbers[i] == '0') distribution.zeros += 1;
-        if (numbers[i] == '2' || numbers[i] == '3') distribution.twothrees += 1;
-        if (numbers[i] == '5') distribution.fives += 1;
-        if (numbers[i] == '6' || numbers[i] == '9') distribution.sixnines += 1;
-        if (numbers[i] == '8') distribution.eights += 1;
-        if (numbers[i] == '1' && numbers[i+1] == '1') distribution.elevens += 1;
-    }
-    biggest = 0;
-    element = "";
-    for (let num in distribution) {
-        if (distribution[num] > biggest) {
-            biggest = distribution[num];
-            element = num;
-        }
-    }
-    switch (element) {
-        case "zeros":
+    switch (str.length % 6) {
+        case 1:
             return COLORS.Orange;
-        case "twothrees":
+        case 2:
             return COLORS.Red;
-        case "fives":
+        case 3:
             return COLORS.Purple;
-        case "sixnines":
+        case 4:
             return COLORS.Blue;
-        case "eights":
+        case 5:
             return COLORS.Teal;
         default:
             return COLORS.Lime;

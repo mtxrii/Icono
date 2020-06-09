@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thing or two</title>
 </head>
-<body>
+<body id='body'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
     <script src="src/canvas.js"></script>
     <link rel="stylesheet" type="text/css" href="src/styles.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet"></link>
 
     <div class="container">
         <h1 id="label">ICONO</h1>
         <div id="app"></div>
     </div>
+
+    <div class="buttons">
+        <div>
+            <input class="" type="text" placeholder="Some piece of text" id="string2gen">
+            <button class="btn" style="cursor: pointer;" type="button" onclick="redo()">GENERATE</button>
+        </div>
+        <button class="btn" style="cursor: pointer;" type="button" >SAVE</button>
+    </div>
+
 </body>
 </html>
