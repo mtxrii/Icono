@@ -29,8 +29,17 @@ let userHash;
 let userColor;
 
 function redo() {
-    userString = document.getElementById("string2gen").value;
-    restart();
+    let newUserString = document.getElementById("string2gen").value;
+    if (newUserString !== userString) {
+        userString = newUserString
+        restart();
+    }
+}
+
+function keyPressed() {
+    if (keyCode === ENTER) {
+      redo();
+  }
 }
 
 function restart() {
@@ -62,11 +71,16 @@ function setup() {
     restart();
 }
 
+function doSave() {
+    let saveName = userString + " - Icono.jpg";
+    save(saveName);
+}
+
 function draw() {
 
-    // if (counter >= 100) {
-    //     noLoop();
-    // }
+    if (counter >= 100) {
+        return;
+    }
 
     spot = getCoords(counter);
     grid[spot[0]][spot[1]] = userHash[counter];
@@ -151,5 +165,11 @@ function colorHash(str) {
             return COLORS.Teal;
         default:
             return COLORS.Lime;
+    }
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById("myModal")) {
+      document.getElementById("myModal").style.display = "none";
     }
 }

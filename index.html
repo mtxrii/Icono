@@ -11,6 +11,24 @@
     <link rel="stylesheet" type="text/css" href="src/styles.css"></link>
     <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet"></link>
 
+    <!-- "What is this" popup -->
+    <div id="myModal" class="modal">
+
+        <!-- Popup content -->
+        <div class="modal-content">
+            <div class="modal-header">
+              <span class="close" onclick="document.getElementById('myModal').style.display = 'none'">&times;</span>
+              <h2>What is this?</h2>
+            </div>
+            <div class="modal-body">
+              <p>Icono is a fun little bitmap image generator that creates a unique pixelated design based on whatever text it's given.</p>
+              <p>Check it out on <a target="_blank" href="https://github.com/mtxrii/Icono">Github</a></p>
+            </div>
+        </div>
+      
+    </div>
+
+
     <div class="container">
         <h1 id="label">ICONO</h1>
         <div id="app"></div>
@@ -21,8 +39,10 @@
             <input class="" type="text" placeholder="Some piece of text" id="string2gen">
             <button class="btn" style="cursor: pointer;" type="button" onclick="redo()">GENERATE</button>
         </div>
-        <button class="btn" style="cursor: pointer;" type="button" >SAVE</button>
+        <button class="btn" style="cursor: pointer;" type="button" onclick="doSave()">SAVE</button>
     </div>
+
+    <img onclick="document.getElementById('myModal').style.display = 'block'" src="https://uxwing.com/wp-content/themes/uxwing/download/03-text-editing/question-mark-round.png" id="fixedbutton">
 
 </body>
 </html>
