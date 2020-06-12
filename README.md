@@ -12,6 +12,8 @@ Inspired by Github's [Identicons](https://github.blog/2013-08-14-identicons/), t
 
 There is also a button to save your icon as a Jpeg, if you wish to use it for anything.
 
+Try it out at [icono.edavalos.com](https://icono.edavalos.com/)
+
 ## How does it work?
 
 The hashing algorithm is simple really. It takes the ascii code of every character in the screen and converts it into binary. This resulting series of 1's and 0's is then made to be exactly 10 chars long. It will almost always be longer, but in the case that it is shorter, i.e. a one character string is given, then it is prefixed with the appropriate ammount of zeros. To shorten it however, it incrementally removes characters alternating between the first and last until the length reaches 10.
